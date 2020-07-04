@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>引入俩种库 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="俩种库全局引入不会冲突1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253main.jsimport Vue from &#39;vue&#39;import App from &#39;.&#x2F;App.vue&#39;import Antd from">
+<meta property="og:type" content="article">
+<meta property="og:title" content="引入俩种库">
+<meta property="og:url" content="http://yoursite.com/2020/06/24/%E5%BC%95%E5%85%A5%E4%BF%A9%E7%A7%8D%E5%BA%93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="俩种库全局引入不会冲突1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253main.jsimport Vue from &#39;vue&#39;import App from &#39;.&#x2F;App.vue&#39;import Antd from">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-24T03:24:03.000Z">
+<meta property="article:modified_time" content="2020-06-24T03:29:06.274Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-引入俩种库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/24/%E5%BC%95%E5%85%A5%E4%BF%A9%E7%A7%8D%E5%BA%93/" class="article-date">
+  <time datetime="2020-06-24T03:24:03.000Z" itemprop="datePublished">2020-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      引入俩种库
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="俩种库全局引入不会冲突"><a href="#俩种库全局引入不会冲突" class="headerlink" title="俩种库全局引入不会冲突"></a>俩种库全局引入不会冲突</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">main.js</span><br><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import App from &#39;.&#x2F;App.vue&#39;</span><br><span class="line">import Antd from &#39;ant-design-vue&#39;;</span><br><span class="line">import &#39;ant-design-vue&#x2F;dist&#x2F;antd.css&#39;;</span><br><span class="line">Vue.use(Antd);</span><br><span class="line"></span><br><span class="line">import ElementUI from &#39;element-ui&#39;;</span><br><span class="line">import &#39;element-ui&#x2F;lib&#x2F;theme-chalk&#x2F;index.css&#39;;</span><br><span class="line">Vue.use(ElementUI);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Vue.config.productionTip &#x3D; false</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  render: h &#x3D;&gt; h(App),</span><br><span class="line">&#125;).$mount(&#39;#app&#39;)</span><br><span class="line"></span><br><span class="line">Hallo.vue</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;hello&quot;&gt;</span><br><span class="line">    &lt;el-button type&#x3D;&#39;primary&#39;&gt; el btn&lt;&#x2F;el-button&gt;</span><br><span class="line">    &lt;a-button type&#x3D;&#39;primary&#39;&gt; a btn&lt;&#x2F;a-button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#39;HelloWorld&#39;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    msg: String</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Add &quot;scoped&quot; attribute to limit CSS to this component only --&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">h3 &#123;</span><br><span class="line">  margin: 40px 0 0;</span><br><span class="line">&#125;</span><br><span class="line">ul &#123;</span><br><span class="line">  list-style-type: none;</span><br><span class="line">  padding: 0;</span><br><span class="line">&#125;</span><br><span class="line">li &#123;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  margin: 0 10px;</span><br><span class="line">&#125;</span><br><span class="line">a &#123;</span><br><span class="line">  color: #42b983;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/24/%E5%BC%95%E5%85%A5%E4%BF%A9%E7%A7%8D%E5%BA%93/" data-id="ckc7e5qdp0001nwtj2i35g64t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/04/vue-watch-%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%B7%E4%BD%93%E5%B1%9E%E6%80%A7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vue watch 对象数组 对象的具体属性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/19/antUI/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">antUI</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/04/vue-watch-%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%B7%E4%BD%93%E5%B1%9E%E6%80%A7/">vue watch 对象数组 对象的具体属性</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/24/%E5%BC%95%E5%85%A5%E4%BF%A9%E7%A7%8D%E5%BA%93/">引入俩种库</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/19/antUI/">antUI</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/17/eslint/">eslint</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/11/java-%E5%88%9D%E5%AD%A6/">java 初学</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

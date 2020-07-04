@@ -64,6 +64,89 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-vue-watch-对象数组-对象的具体属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/04/vue-watch-%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%B7%E4%BD%93%E5%B1%9E%E6%80%A7/" class="article-date">
+  <time datetime="2020-07-04T08:32:50.000Z" itemprop="datePublished">2020-07-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/04/vue-watch-%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%B7%E4%BD%93%E5%B1%9E%E6%80%A7/">vue watch 对象数组 对象的具体属性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Vue开发——watch监听数组、对象、变量"><a href="#Vue开发——watch监听数组、对象、变量" class="headerlink" title="Vue开发——watch监听数组、对象、变量"></a>Vue开发——watch监听数组、对象、变量</h2><h3 id="1-普通的watch"><a href="#1-普通的watch" class="headerlink" title="1.普通的watch"></a>1.普通的watch</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        frontPoints: 0    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">watch: &#123;</span><br><span class="line">    frontPoints(newValue, oldValue) &#123;</span><br><span class="line">        console.log(newValue)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-数组的watch：深拷贝"><a href="#2-数组的watch：深拷贝" class="headerlink" title="2.数组的watch：深拷贝"></a>2.数组的watch：深拷贝</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        winChips: new Array(11).fill(0)   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">watch: &#123;</span><br><span class="line">　　winChips: &#123;</span><br><span class="line">　　　　handler(newValue, oldValue) &#123;</span><br><span class="line">　　　　　　for (let i &#x3D; 0; i &lt; newValue.length; i++) &#123;</span><br><span class="line">　　　　　　　　if (oldValue[i] !&#x3D; newValue[i]) &#123;</span><br><span class="line">　　　　　　　　　　console.log(newValue)</span><br><span class="line">　　　　　　　　&#125;</span><br><span class="line">　　　　　　&#125;</span><br><span class="line">　　　　&#125;,</span><br><span class="line">　　　　deep: true</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-对象的watch"><a href="#3-对象的watch" class="headerlink" title="3.对象的watch"></a>3.对象的watch</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">data() &#123;</span><br><span class="line">　　return &#123;</span><br><span class="line">　　　　bet: &#123;</span><br><span class="line">　　　　　　pokerState: 53,</span><br><span class="line">　　　　　　pokerHistory: &#39;local&#39;</span><br><span class="line">　　　　&#125;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">watch: &#123;</span><br><span class="line">　　bet: &#123;</span><br><span class="line">　　　　handler(newValue, oldValue) &#123;</span><br><span class="line">　　　　　　console.log(newValue)</span><br><span class="line">　　　　&#125;,</span><br><span class="line">　　　　deep: true</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-对象的具体属性的watch："><a href="#4-对象的具体属性的watch：" class="headerlink" title="4.对象的具体属性的watch："></a>4.对象的具体属性的watch：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">data() &#123;</span><br><span class="line">　　return &#123;</span><br><span class="line">　　　　bet: &#123;</span><br><span class="line">　　　　　　pokerState: 53,</span><br><span class="line">　　　　　　pokerHistory: &#39;local&#39;</span><br><span class="line">　　　　&#125;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">computed: &#123;</span><br><span class="line">　　pokerHistory() &#123;</span><br><span class="line">　　　　return this.bet.pokerHistory</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;,</span><br><span class="line">watch: &#123;</span><br><span class="line">　　pokerHistory(newValue, oldValue) &#123;</span><br><span class="line">　　　　console.log(newValue)</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原文链接：<a href="https://blog.csdn.net/guanguan0_0/article/details/80355029" target="_blank" rel="noopener">https://blog.csdn.net/guanguan0_0/article/details/80355029</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/04/vue-watch-%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%B7%E4%BD%93%E5%B1%9E%E6%80%A7/" data-id="ckc7e5qdf0000nwtjap0oco8u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-引入俩种库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/24/%E5%BC%95%E5%85%A5%E4%BF%A9%E7%A7%8D%E5%BA%93/" class="article-date">
+  <time datetime="2020-06-24T03:24:03.000Z" itemprop="datePublished">2020-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/24/%E5%BC%95%E5%85%A5%E4%BF%A9%E7%A7%8D%E5%BA%93/">引入俩种库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="俩种库全局引入不会冲突"><a href="#俩种库全局引入不会冲突" class="headerlink" title="俩种库全局引入不会冲突"></a>俩种库全局引入不会冲突</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">main.js</span><br><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import App from &#39;.&#x2F;App.vue&#39;</span><br><span class="line">import Antd from &#39;ant-design-vue&#39;;</span><br><span class="line">import &#39;ant-design-vue&#x2F;dist&#x2F;antd.css&#39;;</span><br><span class="line">Vue.use(Antd);</span><br><span class="line"></span><br><span class="line">import ElementUI from &#39;element-ui&#39;;</span><br><span class="line">import &#39;element-ui&#x2F;lib&#x2F;theme-chalk&#x2F;index.css&#39;;</span><br><span class="line">Vue.use(ElementUI);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Vue.config.productionTip &#x3D; false</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  render: h &#x3D;&gt; h(App),</span><br><span class="line">&#125;).$mount(&#39;#app&#39;)</span><br><span class="line"></span><br><span class="line">Hallo.vue</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;hello&quot;&gt;</span><br><span class="line">    &lt;el-button type&#x3D;&#39;primary&#39;&gt; el btn&lt;&#x2F;el-button&gt;</span><br><span class="line">    &lt;a-button type&#x3D;&#39;primary&#39;&gt; a btn&lt;&#x2F;a-button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#39;HelloWorld&#39;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    msg: String</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Add &quot;scoped&quot; attribute to limit CSS to this component only --&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">h3 &#123;</span><br><span class="line">  margin: 40px 0 0;</span><br><span class="line">&#125;</span><br><span class="line">ul &#123;</span><br><span class="line">  list-style-type: none;</span><br><span class="line">  padding: 0;</span><br><span class="line">&#125;</span><br><span class="line">li &#123;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  margin: 0 10px;</span><br><span class="line">&#125;</span><br><span class="line">a &#123;</span><br><span class="line">  color: #42b983;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/24/%E5%BC%95%E5%85%A5%E4%BF%A9%E7%A7%8D%E5%BA%93/" data-id="ckc7e5qdp0001nwtj2i35g64t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-antUI" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/19/antUI/" class="article-date">
@@ -506,7 +589,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li></ul>
     </div>
   </div>
 
@@ -519,6 +602,14 @@
       <ul>
         
           <li>
+            <a href="/2020/07/04/vue-watch-%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%B7%E4%BD%93%E5%B1%9E%E6%80%A7/">vue watch 对象数组 对象的具体属性</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/24/%E5%BC%95%E5%85%A5%E4%BF%A9%E7%A7%8D%E5%BA%93/">引入俩种库</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/19/antUI/">antUI</a>
           </li>
         
@@ -528,14 +619,6 @@
         
           <li>
             <a href="/2020/06/11/java-%E5%88%9D%E5%AD%A6/">java 初学</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/11/My-New-Post/">My New Post</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/11/ant-MD/">ant_MD</a>
           </li>
         
       </ul>
